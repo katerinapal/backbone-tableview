@@ -1,12 +1,12 @@
-var Table = require('./views/table.js')
+import { tablejs as index_tablejsjs } from "./views/table.js";
+var index_tablejsjsBinding = {};
+index_models.th = index_thjsjs
 
-Table.tbody = require('./views/tbody')
-Table.tbodyTr = require('./views/tbodyTr')
-Table.thead = require('./views/thead')
-Table.theadTh = require('./views/theadTh')
-Table.theadTr = require('./views/theadTr')
-Table.sorter = require('./sorter')
-Table.models = {}
-Table.models.th = require('./models/th')
-
-module.exports = Table
+module.exports = index_tablejsjsBinding
+var index_tbody = index_tbodyjsjs;
+var index_tbodyTr = index_tbodyTrjsjs;
+var index_thead = index_theadjsjs;
+var index_theadTh = index_theadThjsjs;
+var index_theadTr = index_theadTrjsjs;
+var index_sorter = index_Sorterjs;
+var index_models = {};

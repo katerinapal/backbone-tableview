@@ -1,11 +1,10 @@
-var should = require('should'),
-Backbone = require('backbone')
-
-var Table = require('../src')
+import should from "should";
+import Backbone from "backbone";
+import { Table as tfootTest_Tablejs } from "../src";
 
 describe('Table', function(){
     beforeEach(function(){
-        this.view = new Table().render()
+        this.view = new tfootTest_Tablejs().render()
     })
 
     it('setFoot() should add tfoot', function() {
