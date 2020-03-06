@@ -1,4 +1,4 @@
-var _ = require('underscore')
+import _ from "underscore";
 
 var Sorter = function (collection, attr, sorter) {
     this.collection = collection
@@ -9,9 +9,9 @@ var Sorter = function (collection, attr, sorter) {
         typeof this[sorter] == 'function'
         ? _.bind(this[sorter], this)
         : _.bind(sorter, this)
-}
+};
 
-module.exports = Sorter
+let exported_Sorter = Sorter;
 
 Sorter.prototype.getSorter = function(model) {
     var that = this
@@ -78,3 +78,4 @@ var getAttr = function(model, name) {
 
     return model.get(name)
 }
+export { exported_Sorter as Sorter };

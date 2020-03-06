@@ -1,6 +1,7 @@
-var Model = require('backbone-kinview').models.model
+import backbonekinview_models from "backbone-kinview";
+var Model = backbonekinview_models.models.model
 
-module.exports = Model.extend({
+var thjs = Model.extend({
     toggleState: function() {
         switch (this.get('state')) {
             default:
@@ -15,4 +16,6 @@ module.exports = Model.extend({
                 break;
         }
     }
-})
+});
+
+export { thjs };

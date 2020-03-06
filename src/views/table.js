@@ -1,13 +1,13 @@
-var Backbone = require('backbone'),
-    THead = require('./thead'),
-    TFoot = require('./tfoot'),
-    TBody = require('./tbody')
+import Backbone from "backbone";
+import * as table_theadjsjs from "./thead";
+import * as table_tfootjsjs from "./tfoot";
+import * as table_tbodyjsjs from "./tbody";
 
-module.exports = Backbone.View.extend({
+var tablejs = Backbone.View.extend({
     tagName: 'table',
     constructor: function() {
-        this.head = new THead()
-        this.body = new TBody()
+        this.head = new table_theadjsjs()
+        this.body = new table_tbodyjsjs()
 
         Backbone.View.apply(this, arguments)
         this.superRemove = Backbone.View.prototype.remove
@@ -35,10 +35,12 @@ module.exports = Backbone.View.extend({
     },
     setFoot: function(data) {
         if (!this.foot) {
-            this.foot = new TFoot()
+            this.foot = new table_tfootjsjs()
             this.$('thead')[0].parentNode.insertBefore(this.foot.el, this.$('thead')[0].nextSibling)
         }
 
         this.foot.tr.render(data)
     }
-})
+});
+
+export { tablejs };

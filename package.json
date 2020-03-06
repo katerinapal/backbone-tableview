@@ -1,55 +1,86 @@
 {
-  "name": "backbone-tableview",
-  "version": "1.0.5",
-  "description": "A backbone.js table view with built in lifecycle management for child elements",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "gulp test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mbrevda/backbone-tableview.git"
-  },
-  "keywords": [
-    "backbone",
-    "child",
-    "childview",
-    "children",
-    "collection",
-    "table",
-    "tables",
-    "tableview"
-  ],
-  "author": "mbrevda@gmail.com",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mbrevda/backbone-tableview/issues"
-  },
-  "homepage": "https://github.com/mbrevda/backbone-tableview",
-  "dependencies": {
-    "backbone": "^1",
-    "backbone-collectionview": "^0",
-    "backbone-kinview": "^0",
-    "underscore": "^1"
-  },
-  "devDependencies": {
-    "browserify": "^11",
-    "cssclass": "^1.1.0",
-    "gulp": "^3",
-    "gulp-coverage": "^0.3.27",
-    "gulp-if": "^1.2.4",
-    "gulp-jshint": "^1.8.4",
-    "gulp-mocha": "^2",
-    "gulp-util": "^3.0.1",
-    "jquery": "^2.1.4",
-    "jsdom": "^6",
-    "minimist": "^1.1.0",
-    "mocha": "^2",
-    "should": "^7",
-    "through2": "^2",
-    "vinyl-source-stream": "^1.0.0"
-  }
+    "name": "backbone-tableview",
+    "version": "1.0.5",
+    "description": "A backbone.js table view with built in lifecycle management for child elements",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "test": "gulp test",
+        "compile-indexjs": "babel index.js -o index.js --require babel-polyfill --presets env",
+        "compile-srcsorterjs": "babel src\\sorter.js -o src\\sorter.js --require babel-polyfill --presets env",
+        "compile-srcviewstablejs": "babel src\\views\\table.js -o src\\views\\table.js --require babel-polyfill --presets env",
+        "compile-srcviewstbodyjs": "babel src\\views\\tbody.js -o src\\views\\tbody.js --require babel-polyfill --presets env",
+        "compile-srcviewstfootjs": "babel src\\views\\tfoot.js -o src\\views\\tfoot.js --require babel-polyfill --presets env",
+        "compile-srcviewstheadjs": "babel src\\views\\thead.js -o src\\views\\thead.js --require babel-polyfill --presets env",
+        "compile-teststableTestjs": "babel tests\\tableTest.js -o tests\\tableTest.js --require babel-polyfill --presets env",
+        "compile-teststbodyTestjs": "babel tests\\tbodyTest.js -o tests\\tbodyTest.js --require babel-polyfill --presets env",
+        "compile-teststfootTestjs": "babel tests\\tfootTest.js -o tests\\tfootTest.js --require babel-polyfill --presets env",
+        "compile-teststheadTestjs": "babel tests\\theadTest.js -o tests\\theadTest.js --require babel-polyfill --presets env",
+        "compile-testssorterTestjs": "babel tests\\sorterTest.js -o tests\\sorterTest.js --require babel-polyfill --presets env",
+        "compile-srcviewstbodyTrjs": "babel src\\views\\tbodyTr.js -o src\\views\\tbodyTr.js --require babel-polyfill --presets env",
+        "compile-srcviewstfootTrjs": "babel src\\views\\tfootTr.js -o src\\views\\tfootTr.js --require babel-polyfill --presets env",
+        "compile-srcviewstheadThjs": "babel src\\views\\theadTh.js -o src\\views\\theadTh.js --require babel-polyfill --presets env",
+        "compile-srcviewstheadTrjs": "babel src\\views\\theadTr.js -o src\\views\\theadTr.js --require babel-polyfill --presets env",
+        "compile-teststheadThTestjs": "babel tests\\theadThTest.js -o tests\\theadThTest.js --require babel-polyfill --presets env",
+        "compile-teststheadTrTestjs": "babel tests\\theadTrTest.js -o tests\\theadTrTest.js --require babel-polyfill --presets env",
+        "compile-teststhModelTestjs": "babel tests\\thModelTest.js -o tests\\thModelTest.js --require babel-polyfill --presets env",
+        "compile-teststrTestjs": "babel tests\\trTest.js -o tests\\trTest.js --require babel-polyfill --presets env",
+        "compile-srcmodelsthjs": "babel src\\models\\th.js -o src\\models\\th.js --require babel-polyfill --presets env",
+        "compile-srcindexjs": "babel src\\index.js -o src\\index.js --require babel-polyfill --presets env",
+        "compile-1_script": "npm run compile-indexjs && npm run compile-srcsorterjs && npm run compile-srcviewstablejs && npm run compile-srcviewstbodyjs && npm run compile-srcviewstfootjs && npm run compile-srcviewstheadjs && npm run compile-teststableTestjs && npm run compile-teststbodyTestjs && npm run compile-teststfootTestjs && npm run compile-teststheadTestjs && npm run compile-testssorterTestjs && npm run compile-srcviewstbodyTrjs && npm run compile-srcviewstfootTrjs && npm run compile-srcviewstheadThjs && npm run compile-srcviewstheadTrjs && npm run compile-teststheadThTestjs && npm run compile-teststheadTrTestjs && npm run compile-teststhModelTestjs && npm run compile-teststrTestjs && npm run compile-srcmodelsthjs",
+        "compile-2_script": "npm run compile-srcsorterjs && npm run compile-srcviewstablejs && npm run compile-srcviewstbodyjs && npm run compile-srcviewstfootjs && npm run compile-srcviewstheadjs && npm run compile-teststableTestjs && npm run compile-teststbodyTestjs && npm run compile-teststfootTestjs && npm run compile-teststheadTestjs && npm run compile-testssorterTestjs && npm run compile-srcviewstbodyTrjs && npm run compile-srcviewstfootTrjs && npm run compile-srcviewstheadThjs && npm run compile-srcviewstheadTrjs && npm run compile-teststheadThTestjs && npm run compile-teststheadTrTestjs && npm run compile-teststhModelTestjs && npm run compile-teststrTestjs && npm run compile-srcmodelsthjs && npm run compile-srcindexjs",
+        "compile": "npm run compile-1_script && npm run compile-2_script"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mbrevda/backbone-tableview.git"
+    },
+    "keywords": [
+        "backbone",
+        "child",
+        "childview",
+        "children",
+        "collection",
+        "table",
+        "tables",
+        "tableview"
+    ],
+    "author": "mbrevda@gmail.com",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mbrevda/backbone-tableview/issues"
+    },
+    "homepage": "https://github.com/mbrevda/backbone-tableview",
+    "dependencies": {
+        "backbone": "^1",
+        "backbone-collectionview": "^0",
+        "backbone-kinview": "^0",
+        "underscore": "^1"
+    },
+    "devDependencies": {
+        "browserify": "^11",
+        "cssclass": "^1.1.0",
+        "gulp": "^3",
+        "gulp-coverage": "^0.3.27",
+        "gulp-if": "^1.2.4",
+        "gulp-jshint": "^1.8.4",
+        "gulp-mocha": "^2",
+        "gulp-util": "^3.0.1",
+        "jquery": "^2.1.4",
+        "jsdom": "^6",
+        "minimist": "^1.1.0",
+        "mocha": "^2",
+        "should": "^7",
+        "through2": "^2",
+        "vinyl-source-stream": "^1.0.0",
+        "babel-cli": "latest",
+        "babel-core": "latest",
+        "babel-plugin-add-module-exports": "latest",
+        "babel-plugin-transform-es2015-modules-commonjs": "latest",
+        "babel-polyfill": "latest",
+        "babel-preset-env": "latest",
+        "babel-preset-es2015-without-strict": "latest"
+    }
 }
