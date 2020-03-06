@@ -1,11 +1,12 @@
-var should = require('should'),
-    Backbone = require('backbone')
+import should from "should";
+import Backbone from "backbone";
+import { thead as src_Tablejs } from "../src";
 
-var Thead = require('../src').thead
+var Thead = src_Tablejs.thead
 
 describe('Thead', function(){
     beforeEach(function(){
-        this.view = new Thead()
+        this.view = new src_Tablejs()
     })
 
     it('add() should add a th to the tr', function(){

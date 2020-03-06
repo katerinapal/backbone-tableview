@@ -1,14 +1,16 @@
-var browserify  = require('browserify'),
-    cover	    = require('gulp-coverage'),
-    gulp	    = require('gulp'),
-    gutil	    = require('gulp-util'),
-    gulpif	    = require('gulp-if'),
-    jsdom	    = require('jsdom'),
-    jshint      = require('gulp-jshint'),
-    minimist    = require('minimist'),
-    mocha	    = require('gulp-mocha'),
-    source	    = require('vinyl-source-stream'),
-    through2	= require('through2')
+import browserify from "browserify";
+import cover from "gulp-coverage";
+import gulp from "gulp";
+import gutil from "gulp-util";
+import gulpif from "gulp-if";
+import jsdom from "jsdom";
+import jshint from "gulp-jshint";
+import minimist from "minimist";
+import mocha from "gulp-mocha";
+import source from "vinyl-source-stream";
+import through2 from "through2";
+export var globalWindow;
+export var globalDocument;
 
 var args = minimist(process.argv.slice(3), {
     default: {
@@ -68,8 +70,8 @@ gulp.task('lint', function(){
 
 gulp.task('test', ['lint'], function(){
     // set up window and jquery
-    global.document = jsdom.jsdom('<!doctype html><html><body></body></html>')
-    global.window = global.document.defaultView
+    globalDocument = jsdom.jsdom('<!doctype html><html><body></body></html>')
+    globalWindow = global.document.defaultView
 
     return gulp.src(['tests/*Test.js'], { read: false })
         .pipe(mocha({
@@ -80,8 +82,8 @@ gulp.task('test', ['lint'], function(){
 
 gulp.task('testc', ['lint'], function(){
     // set up window and jquery
-    global.document = jsdom.jsdom('<!doctype html><html><body></body></html>')
-    global.window = global.document.defaultView
+    globalDocument = jsdom.jsdom('<!doctype html><html><body></body></html>')
+    globalWindow = global.document.defaultView
 
     return gulp.src(['tests/*Test.js'], { read: false })
         .pipe(gulpif(args.cover, cover.instrument({
@@ -99,3 +101,11 @@ gulp.task('testc', ['lint'], function(){
             reporter: 'html'
         })))
 })
+
+export function setGlobalDocument(value) {
+    globalDocument = value;
+}
+
+export function setGlobalWindow(value) {
+    globalWindow = value;
+}
