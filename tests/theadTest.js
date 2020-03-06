@@ -1,30 +1,42 @@
-import should from "should";
-import Backbone from "backbone";
-import { thead as src_Tablejs } from "../src";
+"use strict";
 
-var Thead = src_Tablejs.thead
+var _should = require("should");
 
-describe('Thead', function(){
-    beforeEach(function(){
-        this.view = new src_Tablejs()
-    })
+var _should2 = _interopRequireDefault(_should);
 
-    it('add() should add a th to the tr', function(){
-        var view = Backbone.View.extend({
+var _backbone = require("backbone");
+
+var _backbone2 = _interopRequireDefault(_backbone);
+
+var _src = require("../src");
+
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var Thead = _src.thead.thead;
+
+describe('Thead', function () {
+    beforeEach(function () {
+        this.view = new _src.thead();
+    });
+
+    it('add() should add a th to the tr', function () {
+        var view = _backbone2.default.View.extend({
             className: 'foobar',
             tagName: 'th'
-        })
-        this.view.add({view: new view() })
+        });
+        this.view.add({ view: new view() });
 
-        this.view.row.children.length.should.eql(1)
-        this.view.$el.find('tr').find('th').hasClass('foobar').should.be.true
-    })
+        this.view.row.children.length.should.eql(1);
+        this.view.$el.find('tr').find('th').hasClass('foobar').should.be.true;
+    });
 
-    it('remove() should remove the view', function(){
-        this.view.row.addCol({text: 'foo'})
+    it('remove() should remove the view', function () {
+        this.view.row.addCol({ text: 'foo' });
 
-        this.view.remove()
+        this.view.remove();
 
-        this.view.row.children.length.should.eql(0)
-    })
-})
+        this.view.row.children.length.should.eql(0);
+    });
+});

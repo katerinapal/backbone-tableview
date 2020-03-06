@@ -1,21 +1,35 @@
-import models from "backbone-kinview";
-var Model = backbonekinview_models.models.model
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.thjs = undefined;
+
+var _backboneKinview = require('backbone-kinview');
+
+var _backboneKinview2 = _interopRequireDefault(_backboneKinview);
+
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var Model = backbonekinview_models.models.model;
 
 var thjs = Model.extend({
-    toggleState: function() {
+    toggleState: function toggleState() {
         switch (this.get('state')) {
             default:
             case false:
-                this.set('state', 'up')
+                this.set('state', 'up');
                 break;
             case 'up':
-                this.set('state', 'down')
+                this.set('state', 'down');
                 break;
             case 'down':
-                this.set('state', null)
+                this.set('state', null);
                 break;
         }
     }
 });
 
-export { thjs };
+exports.thjs = thjs;

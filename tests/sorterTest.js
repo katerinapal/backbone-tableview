@@ -1,106 +1,111 @@
-import should from "should";
-import Backbone from "backbone";
-import { sorter as src_Tablejs } from "../src";
+"use strict";
 
-var Sorter = src_Tablejs.sorter
+var _should = require("should");
 
-describe('Sorter', function(){
-    beforeEach(function(){
-        this.collection = new Backbone.Collection([
-                {name: 'jim', age: 18, postcode: 'NW6'},
-                {name: 'marry', age: 71, postcode: 'E2'},
-                {name: 'zach', age: 12, postcode: 'X54'},
-                {name: 'adam', age: 34, postcode: 'S5'},
-            ])
-    })
+var _should2 = _interopRequireDefault(_should);
 
-    it('should return a sorter', function(){
-        var s = (new src_Tablejs(this.collection, 'name', function(){})).getSorter()
-        s.should.be.type('function')
-    })
+var _backbone = require("backbone");
 
-    it('should determain sort order up', function(){
-        var m = new Backbone.Model({state: 'up'})
-        var sorter = new src_Tablejs(this.collection, 'name', function(){})
-        var sort = sorter.getSorter()(m)
+var _backbone2 = _interopRequireDefault(_backbone);
 
-        sorter.isReverse.should.be.false
-    })
+var _src = require("../src");
 
-    it('should determain sort order down', function(){
-        var m = new Backbone.Model({state: 'down'})
-        var sorter = new src_Tablejs(this.collection, 'name', function(){})
-        var sort = sorter.getSorter()(m)
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
 
-        sorter.isReverse.should.be.true
-    })
+var Sorter = _src.sorter.sorter;
 
-    it('should determain sort order null', function(){
-        var m = new Backbone.Model({state: null})
-        var sorter = new src_Tablejs(this.collection, 'name', function(){})
-        var sort = sorter.getSorter()(m)
+describe('Sorter', function () {
+    beforeEach(function () {
+        this.collection = new _backbone2.default.Collection([{ name: 'jim', age: 18, postcode: 'NW6' }, { name: 'marry', age: 71, postcode: 'E2' }, { name: 'zach', age: 12, postcode: 'X54' }, { name: 'adam', age: 34, postcode: 'S5' }]);
+    });
 
-        ;(sorter.isReverse === null).should.be.true
-    })
+    it('should return a sorter', function () {
+        var s = new _src.sorter(this.collection, 'name', function () {}).getSorter();
+        s.should.be.type('function');
+    });
 
-    it('string should sort up', function(){
-        var s = (new src_Tablejs(this.collection, 'name', 'string')).getSorter()
-        var m = new Backbone.Model({state: 'up'})
+    it('should determain sort order up', function () {
+        var m = new _backbone2.default.Model({ state: 'up' });
+        var sorter = new _src.sorter(this.collection, 'name', function () {});
+        var sort = sorter.getSorter()(m);
 
-        s(m)
+        sorter.isReverse.should.be.false;
+    });
 
-        this.collection.pluck('name').should.eql(['adam', 'jim', 'marry', 'zach'])
-    })
+    it('should determain sort order down', function () {
+        var m = new _backbone2.default.Model({ state: 'down' });
+        var sorter = new _src.sorter(this.collection, 'name', function () {});
+        var sort = sorter.getSorter()(m);
 
-    it('string should sort down', function(){
-        var s = (new src_Tablejs(this.collection, 'name', 'string')).getSorter()
-        var m = new Backbone.Model({state: 'down'})
+        sorter.isReverse.should.be.true;
+    });
 
-        s(m)
+    it('should determain sort order null', function () {
+        var m = new _backbone2.default.Model({ state: null });
+        var sorter = new _src.sorter(this.collection, 'name', function () {});
+        var sort = sorter.getSorter()(m);(sorter.isReverse === null).should.be.true;
+    });
 
-        this.collection.pluck('name').should.eql(['zach', 'marry', 'jim', 'adam'])
-    })
+    it('string should sort up', function () {
+        var s = new _src.sorter(this.collection, 'name', 'string').getSorter();
+        var m = new _backbone2.default.Model({ state: 'up' });
 
-    it('int should sort up', function(){
-        var s = (new src_Tablejs(this.collection, 'age', 'int')).getSorter()
-        var m = new Backbone.Model({state: 'up'})
+        s(m);
 
-        s(m)
+        this.collection.pluck('name').should.eql(['adam', 'jim', 'marry', 'zach']);
+    });
 
-        this.collection.pluck('name').should.eql(['zach', 'jim', 'adam', 'marry'])
-    })
+    it('string should sort down', function () {
+        var s = new _src.sorter(this.collection, 'name', 'string').getSorter();
+        var m = new _backbone2.default.Model({ state: 'down' });
 
-    it('int should sort down', function(){
-        var s = (new src_Tablejs(this.collection, 'age', 'int')).getSorter()
-        var m = new Backbone.Model({state: 'down'})
-        s(m)
+        s(m);
 
-        this.collection.pluck('name').should.eql(['marry', 'adam', 'jim', 'zach'])
-    })
+        this.collection.pluck('name').should.eql(['zach', 'marry', 'jim', 'adam']);
+    });
 
-    it('int should sort even on mixed strings', function(){
-        var s = (new src_Tablejs(this.collection, 'postcode', 'int')).getSorter()
-        var m = new Backbone.Model({state: 'up'})
-        s(m)
+    it('int should sort up', function () {
+        var s = new _src.sorter(this.collection, 'age', 'int').getSorter();
+        var m = new _backbone2.default.Model({ state: 'up' });
 
-        this.collection.pluck('name').should.eql(['marry', 'adam', 'jim', 'zach'])
-    })
+        s(m);
 
-    it('reset', function(){
-        var orig = this.collection.toJSON()
-        var s = (new src_Tablejs(this.collection, 'name', 'string')).getSorter()
-        var m = new Backbone.Model({state: 'down'})
+        this.collection.pluck('name').should.eql(['zach', 'jim', 'adam', 'marry']);
+    });
 
-        s(m)
+    it('int should sort down', function () {
+        var s = new _src.sorter(this.collection, 'age', 'int').getSorter();
+        var m = new _backbone2.default.Model({ state: 'down' });
+        s(m);
 
-        this.collection.pluck('name').should.eql(['zach', 'marry', 'jim', 'adam'])
-        this.collection.toJSON().should.not.eql(orig)
+        this.collection.pluck('name').should.eql(['marry', 'adam', 'jim', 'zach']);
+    });
 
-        var s2 = (new src_Tablejs(this.collection, 'name', 'string')).getSorter()
-        var m2 = new Backbone.Model({state: null})
+    it('int should sort even on mixed strings', function () {
+        var s = new _src.sorter(this.collection, 'postcode', 'int').getSorter();
+        var m = new _backbone2.default.Model({ state: 'up' });
+        s(m);
 
-        s2(m2)
+        this.collection.pluck('name').should.eql(['marry', 'adam', 'jim', 'zach']);
+    });
 
-        this.collection.toJSON().should.eql(orig)
-    })
-})
+    it('reset', function () {
+        var orig = this.collection.toJSON();
+        var s = new _src.sorter(this.collection, 'name', 'string').getSorter();
+        var m = new _backbone2.default.Model({ state: 'down' });
+
+        s(m);
+
+        this.collection.pluck('name').should.eql(['zach', 'marry', 'jim', 'adam']);
+        this.collection.toJSON().should.not.eql(orig);
+
+        var s2 = new _src.sorter(this.collection, 'name', 'string').getSorter();
+        var m2 = new _backbone2.default.Model({ state: null });
+
+        s2(m2);
+
+        this.collection.toJSON().should.eql(orig);
+    });
+});
