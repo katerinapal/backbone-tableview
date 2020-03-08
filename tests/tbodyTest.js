@@ -1,11 +1,12 @@
-var should = require('should'),
-    Backbone = require('backbone')
+import should from "should";
+import Backbone from "backbone";
+import { Table as src_Tablejs } from "../src";
 
-var Tbody = require('../src').tbody
+var Tbody = src_Tablejs.tbody
 
 describe('TBody', function(){
     beforeEach(function(){
-        this.view = new Tbody()
+        this.view = new src_Tablejs()
         this.collection = new Backbone.Collection([
                 {foo: 'bar0'},
                 {foo: 'bar1'},
@@ -49,7 +50,7 @@ describe('TBody', function(){
     })
 
     it('Initializeing view with colleciton', function(){
-        this.view = new Tbody({collection: this.collection})
+        this.view = new src_Tablejs({collection: this.collection})
 
         this.view.$el.find('tr').length.should.eql(3)
     })

@@ -1,11 +1,12 @@
-var should = require('should'),
-    Backbone = require('backbone')
+import should from "should";
+import Backbone from "backbone";
+import { Table as src_Tablejs } from "../src";
 
-var Tr = require('../src').tbodyTr
+var Tr = src_Tablejs.tbodyTr
 
 describe('tbodyTr', function(){
     it('td should render from model', function(){
-        var v = new Tr({
+        var v = new src_Tablejs({
             model: new Backbone.Model({foo: 'bar'})
         })
 
