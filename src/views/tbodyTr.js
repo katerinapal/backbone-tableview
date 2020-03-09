@@ -1,7 +1,8 @@
-var ChildView = require('backbone-collectionview').childView,
-    _ = require('underscore')
+import backbonecollectionview_childView from "backbone-collectionview";
+import _ from "underscore";
+var ChildView = backbonecollectionview_childView.childView;
 
-module.exports = ChildView.extend({
+var tbodyTrjs = ChildView.extend({
     tagName: 'tr',
     render: function() {
         var tr = _.reduce(this.model.toJSON(), function(tr, attr){
@@ -10,4 +11,6 @@ module.exports = ChildView.extend({
 
         this.el.innerHTML = tr
     }
-})
+});
+
+export { tbodyTrjs };

@@ -1,5 +1,6 @@
-var should = require('should'),
-    Th = require('../src').models.th
+import should from "should";
+import { Table as src_Tablejs } from "../src";
+var Th = src_Tablejs.models.th;
 
 describe('Th Model', function(){
     beforeEach(function(){
