@@ -1,19 +1,33 @@
-import { tablejs as table_tablejsjs } from "./views/table.js";
-import { tbodyjs as tbody_tbodyjsjs } from "./views/tbody";
-import { tbodyTrjs as tbodyTr_tbodyTrjsjs } from "./views/tbodyTr";
-import { theadjs as thead_theadjsjs } from "./views/thead";
-import { theadThjs as theadTh_theadThjsjs } from "./views/theadTh";
-import { theadTrjs as theadTr_theadTrjsjs } from "./views/theadTr";
-import { Sorter as sorter_Sorterjs } from "./sorter";
-import { thjs as th_thjsjs } from "./models/th";
+"use strict";
 
-table_tablejsjs.tbody = tbody_tbodyjsjs
-table_tablejsjs.tbodyTr = tbodyTr_tbodyTrjsjs
-table_tablejsjs.thead = thead_theadjsjs
-table_tablejsjs.theadTh = theadTh_theadThjsjs
-table_tablejsjs.theadTr = theadTr_theadTrjsjs
-table_tablejsjs.sorter = sorter_Sorterjs
-table_tablejsjs.models = {}
-table_tablejsjs.models.th = th_thjsjs
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Table = undefined;
 
-export { table_tablejsjs as Table };
+var _table = require("./views/table.js");
+
+var _tbody = require("./views/tbody");
+
+var _tbodyTr = require("./views/tbodyTr");
+
+var _thead = require("./views/thead");
+
+var _theadTh = require("./views/theadTh");
+
+var _theadTr = require("./views/theadTr");
+
+var _sorter = require("./sorter");
+
+var _th = require("./models/th");
+
+_table.tablejs.tbody = _tbody.tbodyjs;
+_table.tablejs.tbodyTr = _tbodyTr.tbodyTrjs;
+_table.tablejs.thead = _thead.theadjs;
+_table.tablejs.theadTh = _theadTh.theadThjs;
+_table.tablejs.theadTr = _theadTr.theadTrjs;
+_table.tablejs.sorter = _sorter.Sorter;
+_table.tablejs.models = {};
+_table.tablejs.models.th = _th.thjs;
+
+exports.Table = _table.tablejs;
