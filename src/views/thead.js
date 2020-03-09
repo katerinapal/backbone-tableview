@@ -1,11 +1,11 @@
-var Backbone = require('backbone'),
-    KinView = require('backbone-kinview'),
-    Row = require('./theadTr.js')
+import Backbone from "backbone";
+import KinView from "backbone-kinview";
+import * as theadTr_theadTrjsjs from "./theadTr.js";
 
-module.exports = KinView.extend({
+var theadjs = KinView.extend({
     tagName: 'thead',
     initialize: function() {
-        this.row = new Row()
+        this.row = new theadTr_theadTrjsjs()
         this.render()
     },
     render: function() {
@@ -20,4 +20,6 @@ module.exports = KinView.extend({
 
         this.superRemove()
     }
-})
+});
+
+export { theadjs };

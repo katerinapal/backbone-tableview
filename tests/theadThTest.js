@@ -1,7 +1,8 @@
-var should = require('should'),
-    Backbone = require('backbone')
+import should from "should";
+import Backbone from "backbone";
+import { Table as src_Tablejs } from "../src";
 
-var TheadTh = require('../src').theadTh
+var TheadTh = src_Tablejs.theadTh
 
 describe('TheadTh', function(){
     beforeEach(function(){

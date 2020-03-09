@@ -1,7 +1,7 @@
-var Backbone = require('backbone'),
-    _ = require('underscore')
+import Backbone from "backbone";
+import _ from "underscore";
 
-module.exports = Backbone.View.extend({
+var tfootTrjs = Backbone.View.extend({
     tagName: 'tr',
     initialize: function() {
         this.render({})
@@ -13,4 +13,6 @@ module.exports = Backbone.View.extend({
 
         this.el.innerHTML = tr
     }
-})
+});
+
+export { tfootTrjs };
