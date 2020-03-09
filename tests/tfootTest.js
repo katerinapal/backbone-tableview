@@ -1,40 +1,48 @@
-import should from "should";
-import Backbone from "backbone";
-import { Table as src_Tablejs } from "../src";
+"use strict";
 
-describe('Table', function(){
-    beforeEach(function(){
-        this.view = new Table().render()
-    })
+var _should = require("should");
 
-    it('setFoot() should add tfoot', function() {
-        this.view.setFoot({text: 'foo'})
+var _should2 = _interopRequireDefault(_should);
 
-        this.view.$el[0].outerHTML.should.eql(
-            '<table><thead><tr></tr></thead><tfoot><tr><th>foo</th></tr></tfoot><tbody></tbody></table>'
-        )
-    })
+var _backbone = require("backbone");
 
-    it('setFoot() should only add a single tr', function() {
-        this.view.setFoot({text: 'bar'})
-        this.view.setFoot({text: 'foo'})
+var _backbone2 = _interopRequireDefault(_backbone);
 
-        this.view.$el[0].outerHTML.should.eql(
-            '<table><thead><tr></tr></thead><tfoot><tr><th>foo</th></tr></tfoot><tbody></tbody></table>'
-        )
-    })
+var _src = require("../src");
 
-    it('remove()', function() {
-        this.view.setFoot({text: 'bar'})
-        this.view.foot.remove()
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
 
-        this.view.$el[0].outerHTML.should.eql('<table><thead><tr></tr></thead><tbody></tbody></table>')
-    })
+describe('Table', function () {
+    beforeEach(function () {
+        this.view = new Table().render();
+    });
 
-    it('table remove()', function(){
-        this.view.setFoot({text: 'bar'})
-        this.view.remove()
+    it('setFoot() should add tfoot', function () {
+        this.view.setFoot({ text: 'foo' });
 
-        this.view.$el[0].outerHTML.should.eql('<table></table>')
-    })
-})
+        this.view.$el[0].outerHTML.should.eql('<table><thead><tr></tr></thead><tfoot><tr><th>foo</th></tr></tfoot><tbody></tbody></table>');
+    });
+
+    it('setFoot() should only add a single tr', function () {
+        this.view.setFoot({ text: 'bar' });
+        this.view.setFoot({ text: 'foo' });
+
+        this.view.$el[0].outerHTML.should.eql('<table><thead><tr></tr></thead><tfoot><tr><th>foo</th></tr></tfoot><tbody></tbody></table>');
+    });
+
+    it('remove()', function () {
+        this.view.setFoot({ text: 'bar' });
+        this.view.foot.remove();
+
+        this.view.$el[0].outerHTML.should.eql('<table><thead><tr></tr></thead><tbody></tbody></table>');
+    });
+
+    it('table remove()', function () {
+        this.view.setFoot({ text: 'bar' });
+        this.view.remove();
+
+        this.view.$el[0].outerHTML.should.eql('<table></table>');
+    });
+});

@@ -1,34 +1,45 @@
-import should from "should";
-import Backbone from "backbone";
-import { Table as src_Tablejs } from "../src";
+"use strict";
 
-describe('Table', function(){
-    beforeEach(function(){
-        this.view = new Table().render()
-    })
+var _should = require("should");
 
-    it('creates a table', function(){
-        this.view.$el[0].outerHTML
-            .should.eql('<table><thead><tr></tr></thead><tbody></tbody></table>')
-    })
+var _should2 = _interopRequireDefault(_should);
 
-    it('remove()', function(){
-        this.view.remove()
+var _backbone = require("backbone");
 
-        this.view.$el[0].outerHTML.should.eql('<table></table>')
-    })
+var _backbone2 = _interopRequireDefault(_backbone);
 
-    it('addColumn()', function(){
-        var view = this.view.addColumn({text: 'foo'})
+var _src = require("../src");
 
-        view.should.be.instanceof(Backbone.View)
-        view.$el.text().should.eql('foo')
-    })
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
 
-    it('addRow()', function(){
-        var m = new Backbone.Model({foo: 'bar'})
-        var view = this.view.addRow(m)
+describe('Table', function () {
+    beforeEach(function () {
+        this.view = new Table().render();
+    });
 
-        view.get('view').$el.text().should.eql('bar')
-    })
-})
+    it('creates a table', function () {
+        this.view.$el[0].outerHTML.should.eql('<table><thead><tr></tr></thead><tbody></tbody></table>');
+    });
+
+    it('remove()', function () {
+        this.view.remove();
+
+        this.view.$el[0].outerHTML.should.eql('<table></table>');
+    });
+
+    it('addColumn()', function () {
+        var view = this.view.addColumn({ text: 'foo' });
+
+        view.should.be.instanceof(_backbone2.default.View);
+        view.$el.text().should.eql('foo');
+    });
+
+    it('addRow()', function () {
+        var m = new _backbone2.default.Model({ foo: 'bar' });
+        var view = this.view.addRow(m);
+
+        view.get('view').$el.text().should.eql('bar');
+    });
+});

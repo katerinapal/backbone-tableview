@@ -1,16 +1,33 @@
-import backbonecollectionview_childView from "backbone-collectionview";
-import _ from "underscore";
-var ChildView = backbonecollectionview_childView.childView;
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.tbodyTrjs = undefined;
+
+var _backboneCollectionview = require("backbone-collectionview");
+
+var _backboneCollectionview2 = _interopRequireDefault(_backboneCollectionview);
+
+var _underscore = require("underscore");
+
+var _underscore2 = _interopRequireDefault(_underscore);
+
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var ChildView = _backboneCollectionview2.default.childView;
 
 var tbodyTrjs = ChildView.extend({
     tagName: 'tr',
-    render: function() {
-        var tr = _.reduce(this.model.toJSON(), function(tr, attr){
-            return tr += '<td>' + attr + '</td>'
-        }, '')
+    render: function render() {
+        var tr = _underscore2.default.reduce(this.model.toJSON(), function (tr, attr) {
+            return tr += '<td>' + attr + '</td>';
+        }, '');
 
-        this.el.innerHTML = tr
+        this.el.innerHTML = tr;
     }
 });
 
-export { tbodyTrjs };
+exports.tbodyTrjs = tbodyTrjs;
