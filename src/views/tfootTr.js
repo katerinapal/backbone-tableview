@@ -1,18 +1,35 @@
-import ext_backbone_Backbone from "backbone";
-import ext_underscore__ from "underscore";
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.tfootTrjs = undefined;
+
+var _backbone = require("backbone");
+
+var _backbone2 = _interopRequireDefault(_backbone);
+
+var _underscore = require("underscore");
+
+var _underscore2 = _interopRequireDefault(_underscore);
+
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
+
 var tfootTrjs_tfootTrjs;
 
-tfootTrjs_tfootTrjs = ext_backbone_Backbone.View.extend({
+exports.tfootTrjs = tfootTrjs_tfootTrjs = _backbone2.default.View.extend({
     tagName: 'tr',
-    initialize: function() {
-        this.render({})
+    initialize: function initialize() {
+        this.render({});
     },
-    render: function(data) {
-        var tr = ext_underscore__.reduce(data, function(tr, attr){
-            return tr += '<th>' + attr + '</th>'
-        }, '')
+    render: function render(data) {
+        var tr = _underscore2.default.reduce(data, function (tr, attr) {
+            return tr += '<th>' + attr + '</th>';
+        }, '');
 
-        this.el.innerHTML = tr
+        this.el.innerHTML = tr;
     }
-})
-export { tfootTrjs_tfootTrjs as tfootTrjs };
+});
+exports.tfootTrjs = tfootTrjs_tfootTrjs;

@@ -1,25 +1,43 @@
-import ext_backbone_Backbone from "backbone";
-import ext_backbonekinview_KinView from "backbone-kinview";
-import { theadTrjs as theadTr_theadTrjsjs } from "./theadTr.js";
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.theadjs = undefined;
+
+var _backbone = require("backbone");
+
+var _backbone2 = _interopRequireDefault(_backbone);
+
+var _backboneKinview = require("backbone-kinview");
+
+var _backboneKinview2 = _interopRequireDefault(_backboneKinview);
+
+var _theadTr = require("./theadTr.js");
+
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
+
 var theadjs_theadjs;
 
-theadjs_theadjs = ext_backbonekinview_KinView.extend({
+exports.theadjs = theadjs_theadjs = _backboneKinview2.default.extend({
     tagName: 'thead',
-    initialize: function() {
-        this.row = new theadTr_theadTrjsjs()
-        this.render()
+    initialize: function initialize() {
+        this.row = new _theadTr.theadTrjs();
+        this.render();
     },
-    render: function() {
-        this.el.appendChild(this.row.el)
+    render: function render() {
+        this.el.appendChild(this.row.el);
     },
     // raw add, you should probably be using this.row.addCol()
-    add: function() {
-        return this.row.add.apply(this.row, arguments)
+    add: function add() {
+        return this.row.add.apply(this.row, arguments);
     },
-    remove: function() {
-        this.row.remove()
+    remove: function remove() {
+        this.row.remove();
 
-        this.superRemove()
+        this.superRemove();
     }
-})
-export { theadjs_theadjs as theadjs };
+});
+exports.theadjs = theadjs_theadjs;
