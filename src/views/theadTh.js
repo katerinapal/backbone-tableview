@@ -1,13 +1,15 @@
-var Backbone = require('backbone'),
-    _ = require('underscore')
+import ext_backbone_Backbone from "backbone";
+import ext_underscore__ from "underscore";
 
-_.templateSettings = {
+ext_underscore__.templateSettings = {
     interpolate: /\{\{(.+?)\}\}/g
 }
 
-module.exports = Backbone.View.extend({
+var theadThjs_theadThjs;
+
+theadThjs_theadThjs = ext_backbone_Backbone.View.extend({
     tagName: 'th',
-    template: _.template('{{text}}<i class="fa fa-caret-up"></i>'),
+    template: ext_underscore__.template('{{text}}<i class="fa fa-caret-up"></i>'),
     initialize: function(opts) {
         this.text = opts.text || ''
 
@@ -39,3 +41,4 @@ module.exports = Backbone.View.extend({
         }
     }
 })
+export { theadThjs_theadThjs as theadThjs };

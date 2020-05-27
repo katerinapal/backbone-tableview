@@ -1,55 +1,69 @@
 {
-  "name": "backbone-tableview",
-  "version": "1.0.5",
-  "description": "A backbone.js table view with built in lifecycle management for child elements",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "gulp test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mbrevda/backbone-tableview.git"
-  },
-  "keywords": [
-    "backbone",
-    "child",
-    "childview",
-    "children",
-    "collection",
-    "table",
-    "tables",
-    "tableview"
-  ],
-  "author": "mbrevda@gmail.com",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mbrevda/backbone-tableview/issues"
-  },
-  "homepage": "https://github.com/mbrevda/backbone-tableview",
-  "dependencies": {
-    "backbone": "^1",
-    "backbone-collectionview": "^0",
-    "backbone-kinview": "^0",
-    "underscore": "^1"
-  },
-  "devDependencies": {
-    "browserify": "^11",
-    "cssclass": "^1.1.0",
-    "gulp": "^3",
-    "gulp-coverage": "^0.3.27",
-    "gulp-if": "^1.2.4",
-    "gulp-jshint": "^1.8.4",
-    "gulp-mocha": "^2",
-    "gulp-util": "^3.0.1",
-    "jquery": "^2.1.4",
-    "jsdom": "^6",
-    "minimist": "^1.1.0",
-    "mocha": "^2",
-    "should": "^7",
-    "through2": "^2",
-    "vinyl-source-stream": "^1.0.0"
-  }
+    "name": "backbone-tableview",
+    "version": "1.0.5",
+    "description": "A backbone.js table view with built in lifecycle management for child elements",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "test": "gulp test",
+        "compile-src": "babel src --out-dir src --require babel-polyfill --presets env",
+        "compile-srcmodels": "babel src\\models --out-dir src\\models --require babel-polyfill --presets env",
+        "compile-srcviews": "babel src\\views --out-dir src\\views --require babel-polyfill --presets env",
+        "compile-tests": "babel tests --out-dir tests --require babel-polyfill --presets env",
+        "compile-indexjs": "babel index.js -o index.js --require babel-polyfill --presets env",
+        "compile-1_script": "npm run compile-src && npm run compile-srcmodels && npm run compile-srcviews && npm run compile-tests && npm run compile-indexjs",
+        "compile": "npm run compile-1_script"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mbrevda/backbone-tableview.git"
+    },
+    "keywords": [
+        "backbone",
+        "child",
+        "childview",
+        "children",
+        "collection",
+        "table",
+        "tables",
+        "tableview"
+    ],
+    "author": "mbrevda@gmail.com",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mbrevda/backbone-tableview/issues"
+    },
+    "homepage": "https://github.com/mbrevda/backbone-tableview",
+    "dependencies": {
+        "backbone": "^1",
+        "backbone-collectionview": "^0",
+        "backbone-kinview": "^0",
+        "underscore": "^1"
+    },
+    "devDependencies": {
+        "browserify": "^11",
+        "cssclass": "^1.1.0",
+        "gulp": "^3",
+        "gulp-coverage": "^0.3.27",
+        "gulp-if": "^1.2.4",
+        "gulp-jshint": "^1.8.4",
+        "gulp-mocha": "^2",
+        "gulp-util": "^3.0.1",
+        "jquery": "^2.1.4",
+        "jsdom": "^6",
+        "minimist": "^1.1.0",
+        "mocha": "^2",
+        "should": "^7",
+        "through2": "^2",
+        "vinyl-source-stream": "^1.0.0",
+        "babel-cli": "latest",
+        "babel-core": "latest",
+        "babel-plugin-add-module-exports": "latest",
+        "babel-plugin-transform-es2015-modules-commonjs": "latest",
+        "babel-polyfill": "latest",
+        "babel-plugin-transform-object-rest-spread": "latest",
+        "babel-preset-env": "latest"
+    }
 }

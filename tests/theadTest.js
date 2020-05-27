@@ -1,7 +1,8 @@
-var should = require('should'),
-    Backbone = require('backbone')
+import ext_should_should from "should";
+import ext_backbone_Backbone from "backbone";
+import { Table as src_Table } from "../src";
 
-var Thead = require('../src').thead
+var Thead = src_Table.thead
 
 describe('Thead', function(){
     beforeEach(function(){
@@ -9,7 +10,7 @@ describe('Thead', function(){
     })
 
     it('add() should add a th to the tr', function(){
-        var view = Backbone.View.extend({
+        var view = ext_backbone_Backbone.View.extend({
             className: 'foobar',
             tagName: 'th'
         })
