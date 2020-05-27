@@ -1,37 +1,39 @@
-var browserify  = require('browserify'),
-    cover	    = require('gulp-coverage'),
-    gulp	    = require('gulp'),
-    gutil	    = require('gulp-util'),
-    gulpif	    = require('gulp-if'),
-    jsdom	    = require('jsdom'),
-    jshint      = require('gulp-jshint'),
-    minimist    = require('minimist'),
-    mocha	    = require('gulp-mocha'),
-    source	    = require('vinyl-source-stream'),
-    through2	= require('through2')
+import ext_browserify_browserify from "browserify";
+import ext_gulpcoverage_cover from "gulp-coverage";
+import ext_gulp_gulp from "gulp";
+import ext_gulputil_gutil from "gulp-util";
+import ext_gulpif_gulpif from "gulp-if";
+import ext_jsdom_jsdom from "jsdom";
+import ext_gulpjshint_jshint from "gulp-jshint";
+import ext_minimist_minimist from "minimist";
+import ext_gulpmocha_mocha from "gulp-mocha";
+import ext_vinylsourcestream_source from "vinyl-source-stream";
+import ext_through2_through2 from "through2";
+export var globalWindow;
+export var globalDocument;
 
-var args = minimist(process.argv.slice(3), {
+var args = ext_minimist_minimist(process.argv.slice(3), {
     default: {
         cover: true,
         html: false
     }
 })
 
-var processCover = through2.obj(function (stats, enc, done) {
+var processCover = ext_through2_through2.obj(function (stats, enc, done) {
         var lines = stats.coverage.sloc
         var total = stats.coverage.coverage
         total = isNaN(parseFloat(total)) ? 0 : total.toFixed(2)
-        gutil.log(
+        ext_gulputil_gutil.log(
             'Test coverage:',
-            gutil.colors.magenta(total),
-            gutil.colors.magenta('%'),
+            ext_gulputil_gutil.colors.magenta(total),
+            ext_gulputil_gutil.colors.magenta('%'),
             '(',
-            gutil.colors.magenta(lines),
-            gutil.colors.magenta('lines'),
+            ext_gulputil_gutil.colors.magenta(lines),
+            ext_gulputil_gutil.colors.magenta('lines'),
             ')'
         )
         if (stats.coverage.uncovered.length) {
-            gutil.log('Untestd files:', stats.coverage.uncovered)
+            ext_gulputil_gutil.log('Untestd files:', stats.coverage.uncovered)
         }
         done()
     },
@@ -40,8 +42,8 @@ var processCover = through2.obj(function (stats, enc, done) {
         done()
 })
 
-gulp.task('build', function() {
-    var b = browserify({
+ext_gulp_gulp.task('build', function() {
+    var b = ext_browserify_browserify({
         entries: [
             'index.js'
         ],
@@ -53,49 +55,57 @@ gulp.task('build', function() {
     .ignore('underscore')
     .ignore('jquery')
     .bundle()
-    .pipe(source('kinView.js'))
-    .pipe(gulp.dest('./'))
+    .pipe(ext_vinylsourcestream_source('kinView.js'))
+    .pipe(ext_gulp_gulp.dest('./'))
 })
 
-gulp.task('lint', function(){
-    return gulp.src([
+ext_gulp_gulp.task('lint', function(){
+    return ext_gulp_gulp.src([
             'src/**/*.js'
         ])
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
-        .pipe(jshint.reporter(''))
+        .pipe(ext_gulpjshint_jshint())
+        .pipe(ext_gulpjshint_jshint.reporter('default'))
+        .pipe(ext_gulpjshint_jshint.reporter(''));
 })
 
-gulp.task('test', ['lint'], function(){
+ext_gulp_gulp.task('test', ['lint'], function(){
     // set up window and jquery
-    global.document = jsdom.jsdom('<!doctype html><html><body></body></html>')
-    global.window = global.document.defaultView
+    globalDocument = ext_jsdom_jsdom.jsdom('<!doctype html><html><body></body></html>')
+    globalWindow = global.document.defaultView
 
-    return gulp.src(['tests/*Test.js'], { read: false })
-        .pipe(mocha({
+    return ext_gulp_gulp.src(['tests/*Test.js'], { read: false })
+        .pipe(ext_gulpmocha_mocha({
             reporter: 'spec'
-        }))
+        }));
         //.on("error", gutil.log)
 })
 
-gulp.task('testc', ['lint'], function(){
+ext_gulp_gulp.task('testc', ['lint'], function(){
     // set up window and jquery
-    global.document = jsdom.jsdom('<!doctype html><html><body></body></html>')
-    global.window = global.document.defaultView
+    globalDocument = ext_jsdom_jsdom.jsdom('<!doctype html><html><body></body></html>')
+    globalWindow = global.document.defaultView
 
-    return gulp.src(['tests/*Test.js'], { read: false })
-        .pipe(gulpif(args.cover, cover.instrument({
+    return ext_gulp_gulp.src(['tests/*Test.js'], { read: false })
+        .pipe(ext_gulpif_gulpif(args.cover, ext_gulpcoverage_cover.instrument({
             pattern: [
                 'src/**'
             ]
         })))
-        .pipe(mocha({
+        .pipe(ext_gulpmocha_mocha({
             reporter: 'spec'
         }))
-        .pipe(gulpif(args.cover, cover.gather()))
-        .pipe(gulpif(args.cover, processCover))
-        .pipe(gulpif(args.cover && args.html, cover.report({
+        .pipe(ext_gulpif_gulpif(args.cover, ext_gulpcoverage_cover.gather()))
+        .pipe(ext_gulpif_gulpif(args.cover, processCover))
+        .pipe(ext_gulpif_gulpif(args.cover && args.html, ext_gulpcoverage_cover.report({
             outFile: 'coverage.html',
             reporter: 'html'
-        })))
+        })));
 })
+
+export function setGlobalDocument(value) {
+    globalDocument = value;
+}
+
+export function setGlobalWindow(value) {
+    globalWindow = value;
+}

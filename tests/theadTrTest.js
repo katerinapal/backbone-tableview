@@ -1,11 +1,10 @@
-var should = require('should'),
-    Backbone = require('backbone')
-
-var TheadTr = require('../src').theadTr
+import ext_should_should from "should";
+import ext_backbone_Backbone from "backbone";
+import { Table as index_Tablejs } from "../src";
 
 describe('TheadTr', function(){
     beforeEach(function(){
-        this.view = new TheadTr({})
+        this.view = new index_Tablejs({})
     })
 
     it('tagName is tr', function(){

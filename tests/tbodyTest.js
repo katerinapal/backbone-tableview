@@ -1,12 +1,11 @@
-var should = require('should'),
-    Backbone = require('backbone')
-
-var Tbody = require('../src').tbody
+import ext_should_should from "should";
+import ext_backbone_Backbone from "backbone";
+import { Table as index_Tablejs } from "../src";
 
 describe('TBody', function(){
     beforeEach(function(){
-        this.view = new Tbody()
-        this.collection = new Backbone.Collection([
+        this.view = new index_Tablejs()
+        this.collection = new ext_backbone_Backbone.Collection([
                 {foo: 'bar0'},
                 {foo: 'bar1'},
                 {foo: 'bar2'}
@@ -14,7 +13,7 @@ describe('TBody', function(){
     })
 
     it('addRow() should add a row', function(){
-        var m = new Backbone.Model({foo: 'bar'})
+        var m = new ext_backbone_Backbone.Model({foo: 'bar'})
         this.view.addRow(m)
 
         this.view.$el.find('tr').eq(0).find('td').eq(0).html().should.eql('bar')
@@ -49,7 +48,7 @@ describe('TBody', function(){
     })
 
     it('Initializeing view with colleciton', function(){
-        this.view = new Tbody({collection: this.collection})
+        this.view = new index_Tablejs({collection: this.collection})
 
         this.view.$el.find('tr').length.should.eql(3)
     })
@@ -59,7 +58,7 @@ describe('TBody', function(){
 
         this.collection.remove(this.collection)
 
-        this.view.setCollection.call(this.view, new Backbone.Collection())
+        this.view.setCollection.call(this.view, new ext_backbone_Backbone.Collection())
 
         this.view.$el.find('tr').length.should.eql(0)
         this.collection.add({foo: 'bar4'})

@@ -1,7 +1,6 @@
-var should = require('should'),
-Backbone = require('backbone')
-
-var Table = require('../src')
+import ext_should_should from "should";
+import ext_backbone_Backbone from "backbone";
+import { Table as index_Tablejs } from "../src";
 
 describe('Table', function(){
     beforeEach(function(){

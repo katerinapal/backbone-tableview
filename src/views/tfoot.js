@@ -1,11 +1,12 @@
-var Backbone = require('backbone'),
-    KinView = require('backbone-kinview'),
-    Tr = require('./tfootTr.js')
+import ext_backbone_Backbone from "backbone";
+import ext_backbonekinview_KinView from "backbone-kinview";
+import { tfootTrjs as tfootTr_tfootTrjsjs } from "./tfootTr.js";
+var tfootjs_tfootjs;
 
-module.exports = KinView.extend({
+tfootjs_tfootjs = ext_backbonekinview_KinView.extend({
     tagName: 'tfoot',
     initialize: function() {
-        this.tr = new Tr()
+        this.tr = new tfootTr_tfootTrjsjs()
         this.render()
     },
     render: function(data) {
@@ -18,3 +19,4 @@ module.exports = KinView.extend({
         this.superRemove()
     }
 })
+export { tfootjs_tfootjs as tfootjs };

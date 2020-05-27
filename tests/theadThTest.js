@@ -1,11 +1,10 @@
-var should = require('should'),
-    Backbone = require('backbone')
-
-var TheadTh = require('../src').theadTh
+import ext_should_should from "should";
+import ext_backbone_Backbone from "backbone";
+import { Table as index_Tablejs } from "../src";
 
 describe('TheadTh', function(){
     beforeEach(function(){
-        this.view = new TheadTh({text: 'foo'})
+        this.view = new index_Tablejs({text: 'foo'})
     })
 
     it('Should render state up', function(){

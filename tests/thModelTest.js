@@ -1,9 +1,10 @@
-var should = require('should'),
-    Th = require('../src').models.th
+import ext_should_should from "should";
+import { Table as index_Tablejs } from "../src";
+var Th = index_Tablejs.models.th;
 
 describe('Th Model', function(){
     beforeEach(function(){
-        this.m = new Th()
+        this.m = new index_Tablejs()
     })
 
     it('toggleState() from null', function(){
@@ -24,6 +25,6 @@ describe('Th Model', function(){
         this.m.toggleState()
         this.m.toggleState()
 
-        should(this.m.get('state')).be.null
+        ext_should_should(this.m.get('state')).be.null
     })
 })
