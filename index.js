@@ -1,4 +1,12 @@
-import { Table as srcindex_Tablejs } from "./src/index.js";
-indexjs_indexjs = srcindex_Tablejs
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.indexjs = undefined;
+
+var _index = require("./src/index.js");
+
+exports.indexjs = indexjs_indexjs = _index.Table;
 var indexjs_indexjs;
-export { indexjs_indexjs as indexjs };
+exports.indexjs = indexjs_indexjs;

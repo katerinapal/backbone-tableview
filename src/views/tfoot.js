@@ -1,22 +1,39 @@
-import ext_backbone_Backbone from "backbone";
-import ext_backbonekinview_KinView from "backbone-kinview";
-import { tfootTrjs as tfootTr_tfootTrjsjs } from "./tfootTr.js";
+"use strict";
 
-tfootjs_tfootjs = ext_backbonekinview_KinView.extend({
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.tfootjs = undefined;
+
+var _backbone = require("backbone");
+
+var _backbone2 = _interopRequireDefault(_backbone);
+
+var _backboneKinview = require("backbone-kinview");
+
+var _backboneKinview2 = _interopRequireDefault(_backboneKinview);
+
+var _tfootTr = require("./tfootTr.js");
+
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
+
+exports.tfootjs = tfootjs_tfootjs = _backboneKinview2.default.extend({
     tagName: 'tfoot',
-    initialize: function() {
-        this.tr = new tfootTr_tfootTrjsjs()
-        this.render()
+    initialize: function initialize() {
+        this.tr = new _tfootTr.tfootTrjs();
+        this.render();
     },
-    render: function(data) {
-        this.tr.render(data)
-        this.el.appendChild(this.tr.el)
+    render: function render(data) {
+        this.tr.render(data);
+        this.el.appendChild(this.tr.el);
     },
-    remove: function() {
-        this.tr.remove()
+    remove: function remove() {
+        this.tr.remove();
 
-        this.superRemove()
+        this.superRemove();
     }
-})
+});
 var tfootjs_tfootjs;
-export { tfootjs_tfootjs as tfootjs };
+exports.tfootjs = tfootjs_tfootjs;

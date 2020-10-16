@@ -1,16 +1,26 @@
-import ext_should_should from "should";
-import ext_backbone_Backbone from "backbone";
-import { Table as src_Table } from "../src";
+"use strict";
 
-var Tr = src_Table.tbodyTr
+var _should = require("should");
 
-describe('tbodyTr', function(){
-    it('td should render from model', function(){
+var _should2 = _interopRequireDefault(_should);
+
+var _backbone = require("backbone");
+
+var _backbone2 = _interopRequireDefault(_backbone);
+
+var _src = require("../src");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Tr = _src.Table.tbodyTr;
+
+describe('tbodyTr', function () {
+    it('td should render from model', function () {
         var v = new Tr({
-            model: new ext_backbone_Backbone.Model({foo: 'bar'})
-        })
+            model: new _backbone2.default.Model({ foo: 'bar' })
+        });
 
-        v.$el.find('td').length.should.eql(1)
-        v.$el.find('td').text().should.eql('bar')
-    })
-})
+        v.$el.find('td').length.should.eql(1);
+        v.$el.find('td').text().should.eql('bar');
+    });
+});
