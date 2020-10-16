@@ -1,15 +1,15 @@
-var Backbone = require('backbone'),
-    _ = require('underscore'),
-    KinView = require('backbone-kinview'),
-    Th = require('./theadTh.js'),
-    thModel = require('../models/th.js')
+import ext_backbone_Backbone from "backbone";
+import ext_underscore__ from "underscore";
+import ext_backbonekinview_KinView from "backbone-kinview";
+import { theadThjs as theadTh_theadThjsjs } from "./theadTh.js";
+import { thjs as modelsth_thjsjs } from "../models/th.js";
 
-module.exports = KinView.extend({
+theadTrjs_theadTrjs = ext_backbonekinview_KinView.extend({
     tagName: 'tr',
     exclusiveState: true,
-    Th: Th,
+    Th: theadTh_theadThjsjs,
     initialize: function() {
-        this.children.model = thModel
+        this.children.model = modelsth_thjsjs
         this.render()
     },
     addCol: function(opts) {
@@ -28,7 +28,7 @@ module.exports = KinView.extend({
         if (opts.click) {
             view.delegate(
                 'click',
-                _.bind(this.clickState, this, model, opts.click)
+                ext_underscore__.bind(this.clickState, this, model, opts.click)
             )
         }
 
@@ -38,3 +38,5 @@ module.exports = KinView.extend({
         done.call(this, model)
     }
 })
+var theadTrjs_theadTrjs;
+export { theadTrjs_theadTrjs as theadTrjs };

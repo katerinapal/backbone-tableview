@@ -1,7 +1,8 @@
-var should = require('should'),
-    Backbone = require('backbone')
+import ext_should_should from "should";
+import ext_backbone_Backbone from "backbone";
+import { Table as src_Table } from "../src";
 
-var TheadTr = require('../src').theadTr
+var TheadTr = src_Table.theadTr
 
 describe('TheadTr', function(){
     beforeEach(function(){
