@@ -1,52 +1,62 @@
-import ext_should_should from "should";
-import ext_Backbone from "backbone";
-import { Table as src_Table } from "../src";
+"use strict";
 
-var TheadTh = src_Table.theadTh
+var _should = require("should");
 
-describe('TheadTh', function(){
-    beforeEach(function(){
-        this.view = new TheadTh({text: 'foo'})
-    })
+var _should2 = _interopRequireDefault(_should);
 
-    it('Should render state up', function(){
-        this.view.renderState(null, 'up')
+var _backbone = require("backbone");
 
-        this.view.$el.find('i').hasClass('fa-caret-down').should.be.false
-        this.view.$el.find('i').hasClass('fa-caret-up').should.be.true
-        this.view.$el.hasClass('active').should.be.true
-    })
+var _backbone2 = _interopRequireDefault(_backbone);
 
-    it('Should render state down', function(){
-        this.view.renderState(null, 'down')
+var _src = require("../src");
 
-        this.view.$el.find('i').hasClass('fa-caret-down').should.be.true
-        this.view.$el.find('i').hasClass('fa-caret-up').should.be.false
-        this.view.$el.hasClass('active').should.be.true
-    })
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-    it('Should reset state', function(){
-        this.view.renderState(null, null)
+var TheadTh = _src.Table.theadTh;
 
-        this.view.$el.find('i').css('visibility').should.eql('hidden')
-        this.view.$el.hasClass('active').should.be.false
-    })
+describe('TheadTh', function () {
+    beforeEach(function () {
+        this.view = new TheadTh({ text: 'foo' });
+    });
 
-    it('Should toggel state down', function(){
-        this.view.renderState(null, 'up')
-        this.view.renderState(null, 'down')
+    it('Should render state up', function () {
+        this.view.renderState(null, 'up');
 
-        this.view.$el.find('i').hasClass('fa-caret-down').should.be.true
-        this.view.$el.find('i').hasClass('fa-caret-up').should.be.false
-        this.view.$el.hasClass('active').should.be.true
-    })
+        this.view.$el.find('i').hasClass('fa-caret-down').should.be.false;
+        this.view.$el.find('i').hasClass('fa-caret-up').should.be.true;
+        this.view.$el.hasClass('active').should.be.true;
+    });
 
-    it('Should toggel state up', function(){
-        this.view.renderState(null, 'down')
-        this.view.renderState(null, 'up')
+    it('Should render state down', function () {
+        this.view.renderState(null, 'down');
 
-        this.view.$el.find('i').hasClass('fa-caret-down').should.be.false
-        this.view.$el.find('i').hasClass('fa-caret-up').should.be.true
-        this.view.$el.hasClass('active').should.be.true
-    })
-})
+        this.view.$el.find('i').hasClass('fa-caret-down').should.be.true;
+        this.view.$el.find('i').hasClass('fa-caret-up').should.be.false;
+        this.view.$el.hasClass('active').should.be.true;
+    });
+
+    it('Should reset state', function () {
+        this.view.renderState(null, null);
+
+        this.view.$el.find('i').css('visibility').should.eql('hidden');
+        this.view.$el.hasClass('active').should.be.false;
+    });
+
+    it('Should toggel state down', function () {
+        this.view.renderState(null, 'up');
+        this.view.renderState(null, 'down');
+
+        this.view.$el.find('i').hasClass('fa-caret-down').should.be.true;
+        this.view.$el.find('i').hasClass('fa-caret-up').should.be.false;
+        this.view.$el.hasClass('active').should.be.true;
+    });
+
+    it('Should toggel state up', function () {
+        this.view.renderState(null, 'down');
+        this.view.renderState(null, 'up');
+
+        this.view.$el.find('i').hasClass('fa-caret-down').should.be.false;
+        this.view.$el.find('i').hasClass('fa-caret-up').should.be.true;
+        this.view.$el.hasClass('active').should.be.true;
+    });
+});
