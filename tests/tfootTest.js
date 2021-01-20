@@ -1,11 +1,10 @@
-var should = require('should'),
-Backbone = require('backbone')
-
-var Table = require('../src')
+import ext_should_should from "should";
+import ext_Backbone from "backbone";
+import { Table as src_Table } from "../src";
 
 describe('Table', function(){
     beforeEach(function(){
-        this.view = new Table().render()
+        this.view = new src_Table().render()
     })
 
     it('setFoot() should add tfoot', function() {

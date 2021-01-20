@@ -1,4 +1,4 @@
-var _ = require('underscore')
+import ext__ from "underscore";
 
 var Sorter = function (collection, attr, sorter) {
     this.collection = collection
@@ -7,11 +7,13 @@ var Sorter = function (collection, attr, sorter) {
 
     this.sorter =
         typeof this[sorter] == 'function'
-        ? _.bind(this[sorter], this)
-        : _.bind(sorter, this)
+        ? ext__.bind(this[sorter], this)
+        : ext__.bind(sorter, this)
 }
 
-module.exports = Sorter
+var mod_Sorter;
+
+mod_Sorter = Sorter
 
 Sorter.prototype.getSorter = function(model) {
     var that = this
@@ -46,8 +48,8 @@ Sorter.prototype.int = function(a, b) {
     var i = getAttr(a, this.attr),
         j = getAttr(b, this.attr)
 
-    i = _.isNumber(i) ? i : Number(i.replace(rep, ''))
-    j = _.isNumber(j) ? j : Number(j.replace(rep, ''))
+    i = ext__.isNumber(i) ? i : Number(i.replace(rep, ''))
+    j = ext__.isNumber(j) ? j : Number(j.replace(rep, ''))
 
     if (this.isReverse) {
         return j <= i ? -1 : 1
@@ -62,7 +64,7 @@ Sorter.prototype.reset = function() {
 
    this.attr = 'cid'
    this.isReverse = null
-   this.collection.comparator = _.bind(this.int, this)
+   this.collection.comparator = ext__.bind(this.int, this)
    this.collection.sort()
 
    this.attr = origAttr
@@ -78,3 +80,4 @@ var getAttr = function(model, name) {
 
     return model.get(name)
 }
+export { mod_Sorter as Sorter };
