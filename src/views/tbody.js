@@ -1,20 +1,33 @@
-import ext_CollectionView from "backbone-collectionview";
-import { tbodyTrjs as Tr } from "./tbodyTr.js";
-import { Sorter as sorter_Sorter } from "../sorter";
+"use strict";
 
-mod_tbodyjs = ext_CollectionView.extend({
-    childView: Tr,
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.tbodyjs = undefined;
+
+var _backboneCollectionview = require("backbone-collectionview");
+
+var _backboneCollectionview2 = _interopRequireDefault(_backboneCollectionview);
+
+var _tbodyTr = require("./tbodyTr.js");
+
+var _sorter = require("../sorter");
+
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+}
+
+exports.tbodyjs = mod_tbodyjs = _backboneCollectionview2.default.extend({
+    childView: _tbodyTr.tbodyTrjs,
     tagName: 'tbody',
-    initialize: function(opts) {
-
+    initialize: function initialize(opts) {},
+    addRow: function addRow(model) {
+        return this.addChild(model);
     },
-    addRow: function(model) {
-        return this.addChild(model)
-    },
-    getSorter: function (attr, sorter) {
-        var s = new sorter_Sorter(this.collection, attr, sorter)
-        return s.getSorter()
-    },
-})
+    getSorter: function getSorter(attr, sorter) {
+        var s = new _sorter.Sorter(this.collection, attr, sorter);
+        return s.getSorter();
+    }
+});
 var mod_tbodyjs;
-export { mod_tbodyjs as tbodyjs };
+exports.tbodyjs = mod_tbodyjs;

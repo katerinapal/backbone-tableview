@@ -1,49 +1,61 @@
-import ext_should_should from "should";
-import ext_Backbone from "backbone";
-import { Table as src_Table } from "../src";
+"use strict";
 
-var TheadTr = src_Table.theadTr
+var _should = require("should");
 
-describe('TheadTr', function(){
-    beforeEach(function(){
-        this.view = new TheadTr({})
-    })
+var _should2 = _interopRequireDefault(_should);
 
-    it('tagName is tr', function(){
-        this.view.tagName.should.eql('tr')
-    })
+var _backbone = require("backbone");
 
-    it('should have exclusive state', function(){
-        this.view.exclusiveState.should.be.ok
-    })
+var _backbone2 = _interopRequireDefault(_backbone);
 
-    it('addCol() should add a th', function(){
-        this.view.addCol({text: 'foobar'})
+var _src = require("../src");
 
-        this.view.$el.children().eq(0).text().should.eql('foobar')
-    })
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-    it('should not have state if a click callback isnt passed', function(){
-        var view = this.view.addCol({text: 'foo'})
+var TheadTr = _src.Table.theadTr;
 
-        this.view.children.where({view: view})[0].get('hasState').should.be.falsse
-    })
+describe('TheadTr', function () {
+    beforeEach(function () {
+        this.view = new TheadTr({});
+    });
 
-    it('should have state if a click callback is passed', function(){
-        var view = this.view.addCol({text: 'foo', click: function(){}})
+    it('tagName is tr', function () {
+        this.view.tagName.should.eql('tr');
+    });
 
-        this.view.children.where({view: view})[0].get('hasState').should.be.falsse
-    })
+    it('should have exclusive state', function () {
+        this.view.exclusiveState.should.be.ok;
+    });
 
-    it('click should trigger the callback', function(done){
-        var view = this.view.addCol({text: 'foo', click: function(){done()}})
+    it('addCol() should add a th', function () {
+        this.view.addCol({ text: 'foobar' });
 
-        view.$el.trigger('click')
-    })
+        this.view.$el.children().eq(0).text().should.eql('foobar');
+    });
 
-    it('remove() should remove all children', function(){
-        this.view.remove()
+    it('should not have state if a click callback isnt passed', function () {
+        var view = this.view.addCol({ text: 'foo' });
 
-        this.view.children.length.should.eql(0)
-    })
-})
+        this.view.children.where({ view: view })[0].get('hasState').should.be.falsse;
+    });
+
+    it('should have state if a click callback is passed', function () {
+        var view = this.view.addCol({ text: 'foo', click: function click() {} });
+
+        this.view.children.where({ view: view })[0].get('hasState').should.be.falsse;
+    });
+
+    it('click should trigger the callback', function (done) {
+        var view = this.view.addCol({ text: 'foo', click: function click() {
+                done();
+            } });
+
+        view.$el.trigger('click');
+    });
+
+    it('remove() should remove all children', function () {
+        this.view.remove();
+
+        this.view.children.length.should.eql(0);
+    });
+});

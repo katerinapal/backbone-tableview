@@ -1,4 +1,12 @@
-import { Table as indexjs } from "./src/index.js";
-mod_indexjs = indexjs
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.indexjs = undefined;
+
+var _index = require("./src/index.js");
+
+exports.indexjs = mod_indexjs = _index.Table;
 var mod_indexjs;
-export { mod_indexjs as indexjs };
+exports.indexjs = mod_indexjs;
