@@ -1,8 +1,8 @@
-var CollectionView = require('backbone-collectionview'),
-    Tr = require('./tbodyTr.js'),
-    Sorter = require('../sorter')
+import ext_CollectionView from "backbone-collectionview";
+import { tbodyTrjs as Tr } from "./tbodyTr.js";
+import { Sorter as sorter_Sorter } from "../sorter";
 
-module.exports = CollectionView.extend({
+mod_tbodyjs = ext_CollectionView.extend({
     childView: Tr,
     tagName: 'tbody',
     initialize: function(opts) {
@@ -12,7 +12,9 @@ module.exports = CollectionView.extend({
         return this.addChild(model)
     },
     getSorter: function (attr, sorter) {
-        var s = new Sorter(this.collection, attr, sorter)
+        var s = new sorter_Sorter(this.collection, attr, sorter)
         return s.getSorter()
     },
 })
+var mod_tbodyjs;
+export { mod_tbodyjs as tbodyjs };
